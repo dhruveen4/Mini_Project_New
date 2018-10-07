@@ -1,3 +1,5 @@
-a,b,c,d
-
-1,2,3,4
+First Name,Last Name,UCID,Grade,Term
+Smith,Joe,jsmith,B,Fall2018
+Yash,Shah,syash,A,Fall2018
+Manan,Patel,pmanan,B,Fall2018
+Andrew,Simmon,sandrew,A,Fall2017
