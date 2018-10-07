@@ -8,7 +8,6 @@ class main{
     }
 }
 
-
 class html{
     public static function
     generateTable($records) {
@@ -51,21 +50,57 @@ class html{
                 $html .= html_tableHead::close_TableHead();
 
                 $count++;
-
+                $html .= create_table_Rows::open_tableRow();
+                foreach($values as  $value2){
+                    $html .= tableData::printTabledata($value2);
+//
+                }
+                $html .= create_table_Rows::close_tableRow();
             }
+
+//Finish table and return
+            $html .= html_table::close_htmlTable();
+            $html .= html_body::close_HtmlBody() ;
+            $html .= '</html>';
+
+            return $html;
+
+        }
+
+    }
+
 }
 
-class create_table_Headers{
+// create table header
+class create_table_Header{
 
+    public static function createHeader ($value){
+
+        return '<th>'. $value . '</th>';
+
+    }
 }
 
+
+// create table rows
 class create_table_Rows{
 
+    public static function open_tableRow(){
+        return '<tr>';
+    }
+    public static function close_tableRow(){
+        return '</tr>';
+    }
 }
 
+
+// get table data
 class tableData{
-
+    public static function printTabledata ($value){
+        return '<td>'. $value . '</td>';
+    }
 }
+
 
 class html_header{
 
