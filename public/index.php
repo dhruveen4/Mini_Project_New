@@ -4,6 +4,7 @@ class main{
     static public function start($examples){
         $records = csv::getRecords($examples);
         $table = html::generateTable($examples);
+        system::printPage($table);
         echo $table;
     }
 }
@@ -198,7 +199,8 @@ class record {
             foreach ($record as $property => $value) {
                 $this->createProperty($property, $value);
             }
-        }else{
+        }
+        else{
 //        print "blank fields";
         }
 
