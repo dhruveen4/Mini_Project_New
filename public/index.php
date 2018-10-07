@@ -4,7 +4,7 @@ class main{
     static public function start($examples){
         $records = csv::getRecords($examples);
         $table = html::generateTable($examples);
-        system::printPage($table);
+       
         echo $table;
     }
 }
