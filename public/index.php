@@ -102,19 +102,51 @@ class tableData{
 }
 
 
+// get html header
 class html_header{
+    public static function getHtmlHeader(){
 
+        $html_header = '<head>';
+        $html_header .= '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">';
+        $html_header .= '<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>';
+        $html_header .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>';
+        $html_header .= '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>';
+        $html_header .= '</head>';
+
+        return $html_header;
+    }
 }
 
+
+// create html body
 class html_body{
 
+    public static function open_HtmlBody(){
+        return '<body>';
+    }
+    public static function close_HtmlBody(){
+        return '</body>';
+    }
 }
 
+// create html table
 class html_table{
-
+    public static function open_htmlTable(){
+        return '<table class="table table-bordered table-striped">';
+    }
+    public static function close_htmlTable(){
+        return '</table>';
+    }
 }
 
-class html_tablehead{
+// create table head
+class html_tableHead{
+    public static function open_TableHead(){
+        return '<thead class="thead-dark">';
+    }
+    public static function close_TableHead(){
+        return '</thead >';
+    }
 
 }
 
