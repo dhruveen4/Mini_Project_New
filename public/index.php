@@ -1,9 +1,9 @@
 <?php
-main::start("SalesJan2009.csv");
+main::start("examples.csv");
 class main{
-    static public function start($SalesJan2009){
-        $records = csv::getRecords($SalesJan2009);
-        $table = html::generateTable($SalesJan2009);
+    static public function start($examples){
+        $records = csv::getRecords($examples);
+        $table = html::generateTable($examples);
         echo $table;
     }
 }
@@ -12,7 +12,7 @@ class html{
     public static function
     generateTable($records) {
         $html = '<html>';
-        $html = html_hreader::getHtmlHeader();
+        $html = html_header::getHtmlHeader();
         $html = html_body::open_HtmlBody();
 
         //Start Table
@@ -23,7 +23,7 @@ class html{
         $count = 0;
 
 
-        foreach ($records as $record){
+        foreach($records as $record){
 
 //        if($count == 0){
 
@@ -150,14 +150,89 @@ class html_tableHead{
 
 }
 
-class csv{
+class csv {
 
+    static public function getRecords($filename){
+        $file = fopen($filename,  "r");
+
+        $fieldNames = array();
+
+        $count =0;
+
+        while(! feof($file)) {
+            $record = fgetcsv($file);
+
+
+
+            if ($count == 0) {
+                $fieldNames = $record;
+//    print_r($record);
+
+                $count++;
+
+            } else {
+//    print_r($record);
+
+                $records[] = recordFactory::create($fieldNames, $record);
+
+            }
+//$count++;
+
+        }
+
+        fclose($file);
+        return $record;
+    }
 }
 
-class record{
+class record {
 
+    public function __construct( array $fieldNames = null, array $values = null)
+
+    {
+
+//print_r($record);
+        if (count($fieldNames) == count($values)) {
+            $record = array_combine($fieldNames, $values);
+            system::forEachloop($record,2);
+            foreach ($record as $property => $value) {
+                $this->createProperty($property, $value);
+            }
+        }else{
+//        print "blank fields";
+        }
+
+    }
+
+    public function createProperty($name, $value){
+        $this->{$name} = $value;
+
+    }
+
+
+    public function returnArray(){
+
+        $array = (array) $this;
+//print "record return array";
+//var_dump(array_keys($array) );
+        return $array;
+
+    }
 }
 
-class recoedFactory{
+class recordFactory {
 
+    public static  function  create( array $fieldNames = null, array  $values = null) {
+
+        $record = new record($fieldNames, $values);
+
+        return $record;
+
+    }
+
+}
+class system {
+    public static function printPage($page){
+        echo $page;
+    }
 }
